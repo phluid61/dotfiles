@@ -1,0 +1,16 @@
+[push]
+	default = simple
+[alias]
+	stat = status
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	who = shortlog -s --
+	fuck = reset --hard ^HEAD
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	prune-all = !git remote | xargs -n 1 git remote prune
+	edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
+	add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
