@@ -14,3 +14,4 @@
 	add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	recommit = commit --amend
+	aliases = !sh -c 'git config --get-regexp "^alias\." | sed -e "s/alias\.\(\S\+\)/    \1 =/"'
