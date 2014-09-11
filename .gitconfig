@@ -16,6 +16,7 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	aliases = !sh -c 'git config --get-regexp \"^alias\\.\" | sed -e \"s/alias\\.\\(\\S\\+\\)/    \\1 =/\"'
 	; action commands
+	unstash = stash apply
 	panic = reset --hard ^HEAD
 	prune-all = !git remote | xargs -n 1 git remote prune
 	edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
