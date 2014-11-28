@@ -8,3 +8,6 @@ alias vi='vim -p'
 # (no more cwd confusion for me)
 alias cd='cd -P'
 
+# Because |Grep never works
+alias Grep=grep
+
