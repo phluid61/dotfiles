@@ -50,7 +50,21 @@ case "$TERM" in
     *color*|vt100)
         # colour the prompt; particularly good for breaking up big file
         # dumps and log traces.
-        export PS1='\[\e]0;\u@\h: \w\a\][\e[33m\u\e[0m@\e[36m\h\e[0m \e[94m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+        case "$TERM" in
+            *256color*)
+                # user:      33      94 (blue)
+                # superuser: 202     33 (orange)
+                #
+                # safe host: 22;40   35 (purples)
+                # dev host:  23;123  36 (cyans)
+                # qa host:   52;166  35 (royal)
+                # prod host: 88;214  31 (reds)
+                export PS1='\[\e]0;\u@\h: \w\a\][\e[38;5;33m\u\e[0m@\e[48;5;22;38;5;40m\h\e[0m \e[38;5;33m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                ;;
+            *)
+                export PS1='\[\e]0;\u@\h: \w\a\][\e[94m\u\e[0m@\e[92m\h\e[0m \e[94m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                ;;
+        esac
 
         # enable color support of ls and also add handy aliases
         if [ -x /usr/bin/dircolors ]; then
