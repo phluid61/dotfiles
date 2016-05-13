@@ -87,6 +87,9 @@ hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
 hi Comment		ctermfg=246		cterm=none		guifg=#9c998e	gui=italic
 hi Todo			ctermfg=101		cterm=none		guifg=#857b6f	gui=italic
 
+hi Italic		ctermfg=252		cterm=none		guifg=#d0d0d0	gui=italic
+hi Bold			ctermfg=254		cterm=none		guifg=#e4e4e4	gui=bold
+hi Code			ctermfg=159		cterm=none		guifg=#afffff	gui=none
 
 " Links
 hi! link FoldColumn		Folded
