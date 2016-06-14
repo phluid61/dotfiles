@@ -59,10 +59,18 @@ case "$TERM" in
                 # dev host:  23;123  36 (cyans)
                 # qa host:   52;166  35 (royal)
                 # prod host: 88;214  31 (reds)
-                export PS1='\[\e]0;\u@\h: \w\a\][\e[38;5;33m\u\e[0m@\e[48;5;22;38;5;40m\h\e[0m \e[38;5;33m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                export PS1='\[\e]0;\u@\h: \w\a\]❬\e[38;5;33m\u\e[0m@\e[48;5;22;38;5;40m\h\e[0m \e[38;5;33m\w\e[0m❭\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                export PS2='\$… '
+                export PS3='
+▷ '
+                export PS4='·\e[38;5;202m$0\e[0m:\e[38;5;33m$LINENO\e[0m> '
                 ;;
             *)
                 export PS1='\[\e]0;\u@\h: \w\a\][\e[94m\u\e[0m@\e[92m\h\e[0m \e[94m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                export PS2='\$> '
+                export PS3='
+> '
+                export PS4='.\e[33m$0\e[0m:\e[34m$LINENO\e[0m> '
                 ;;
         esac
 
@@ -79,6 +87,13 @@ case "$TERM" in
     *)
         # monochromatic version of my otherwise sexy color prompt
         export PS1='[\u@\h \w]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+        # prompt for continued (multiline) commands
+        export PS2='\$> '
+        # prompt for `select`
+        export PS3='
+> '
+        # echo prefix for `set -x`
+        export PS4='.$0:$LINENO> '
         ;;
 esac
 
