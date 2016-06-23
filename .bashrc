@@ -5,11 +5,25 @@ case $- in
     *) return;;
 esac
 
+pathmunge () {
+    if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+       if [ "$2" = "after" ] ; then
+          PATH=$PATH:$1
+       else
+          PATH=$1:$PATH
+       fi
+    fi
+}
+
+
 # Hack! Force colours in all xterms! Makes vim/gvim much
 # more prettier. Might make things asplode.
 case "$TERM" in
     xterm*)
         export TERM=xterm-256color
+        ;;
+    screen*)
+        export TERM=screen-256color
         ;;
     rxvt*unicode*)
         export TERM=rxvt-unicode-256color
@@ -101,6 +115,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+#pathmunge /usr/local/ssl/bin
+
 #function _ssh_completion() {
 #    local cur=${COMP_WORDS[COMP_CWORD]}
 #    local all_hosts=$(grep Host ~/.ssh/config | sed -e 's/Host \|*//g')
@@ -118,3 +134,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+unset pathmunge
