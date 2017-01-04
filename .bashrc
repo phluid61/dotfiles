@@ -136,3 +136,32 @@ if ! shopt -oq posix; then
 fi
 
 unset pathmunge
+
+### Functions
+
+# Usage: hush <command> [<args>...]
+# Redirects all STDOUT to /dev/null
+function hush() {
+    "$@" > /dev/null
+    return $?
+}
+export -f hush
+
+# Usage: shush <command> [<args>...]
+# Redirects all output to /dev/null
+function shush() {
+    "$@" > /dev/null 2> /dev/null
+    return $?
+}
+export -f shush
+
+# Usage: die <status> [<message>...]
+# Prints 'message', if any, and exits
+function die() {
+    local RC=$1
+    shift
+    [ $# -gt 0 ] && echo "$@" >&2
+    exit $RC
+}
+export -f die
+
