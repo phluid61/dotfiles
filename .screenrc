@@ -1,0 +1,20 @@
+# allow bold colours
+attrcolor b ".I"
+
+# rules for setting AB=background and AF=foreground
+termcapinfo xterm 'Co#156:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# use Shift+PgUp / Shift+PgDn
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+
+# erase with background colour
+defbce "on"
+
+term xterm-256color
+
+defscrollback 30000
+
+# pretty bottom line
+hardstatus alwayslastline
+hardstatus string '%{= Kd} %{= Kd}%-w%{= Kr}[%{= KW}%n %t%{= Kr}]%{= Kd}%+w %-= %{KG} %H%{KW}|%{KY}%101`%{KW}|%D %M %d %Y%{= Kc} %C%A%{-}'
+
