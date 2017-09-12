@@ -59,6 +59,11 @@ stty -ixon
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+#COLOUR_ENVIRONMENT=PROD
+#COLOUR_ENVIRONMENT=QA
+#COLOUR_ENVIRONMENT=TEST
+COLOUR_ENVIRONMENT=DEV
+
 # If we can do colours, do colours.
 case "$TERM" in
     *color*|vt100)
@@ -66,21 +71,36 @@ case "$TERM" in
         # dumps and log traces.
         case "$TERM" in
             *256color*)
-                # user:      33      94 (blue)
-                # superuser: 202     33 (orange)
-                #
-                # safe host: 22;40   35 (purples)
-                # dev host:  23;123  36 (cyans)
-                # qa host:   52;166  35 (royal)
-                # prod host: 88;214  31 (reds)
-                export PS1='\[\e]0;\u@\h: \w\a\]❬\e[38;5;33m\u\e[0m@\e[48;5;22;38;5;40m\h\e[0m \e[38;5;33m\w\e[0m❭\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                case "$USER" in
+                    root) USERNAME_C="38;5;202" ;;
+                    *)    USERNAME_C="38;5;33"  ;;
+                esac
+                case "$COLOUR_ENVIRONMENT" in
+                    DEV)  HOSTNAME_C="48;5;22;38;5;40"  ;;
+                    TEST) HOSTNAME_C="48;5;23;38;5;123" ;;
+                    QA)   HOSTNAME_C="48;5;53;38;5;166" ;;
+                    *)    HOSTNAME_C="48;5;88;38;5;214" ;;
+                esac
+                DIRNAME_C="38;5;33"
+                export PS1='\[\e]0;\u@\h: \w\a\]❬\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[0m❭\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
                 export PS2='\$… '
                 export PS3='
 ▷ '
                 export PS4='·\e[38;5;202m$0\e[0m:\e[38;5;33m$LINENO\e[0m> '
                 ;;
             *)
-                export PS1='\[\e]0;\u@\h: \w\a\][\e[94m\u\e[0m@\e[92m\h\e[0m \e[94m\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
+                case "$USER" in
+                    root) USERNAME_C="33" ;;
+                    *)    USERNAME_C="94" ;;
+                esac
+                case "$COLOUR_ENVIRONMENT" in
+                    DEV)  HOSTNAME_C="92" ;;
+                    TEST) HOSTNAME_C="36" ;;
+                    QA)   HOSTNAME_C="35" ;;
+                    *)    HOSTNAME_C="31" ;;
+                esac
+                DIRNAME_C="31"
+                export PS1='\[\e]0;\u@\h: \w\a\][\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[0m]\n[$('$HOME'/.dir_chomp.rb "$(pwd)")]\$ '
                 export PS2='\$> '
                 export PS3='
 > '
