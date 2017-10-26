@@ -6,12 +6,11 @@ case $- in
 esac
 
 pathmunge () {
-    if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
-       if [ "$2" = "after" ] ; then
-          PATH=$PATH:$1
-       else
-          PATH=$1:$PATH
-       fi
+    PATH=$(echo "$PATH" | sed -e 's#\(^\|:\)'"$1"'\(:\|$\)#\1\2#g' | sed -e 's/::/:/g')
+    if [ "$2" = "after" ] ; then
+        PATH=${PATH:+$PATH:}$1
+    else
+        PATH=$1${PATH:+:$PATH}
     fi
 }
 
@@ -155,6 +154,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH
 unset pathmunge
 
 ### Functions
