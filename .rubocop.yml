@@ -1,0 +1,255 @@
+AllCops:
+  DisplayCopNames: true
+
+#
+# General Overrides
+#
+
+Metrics/LineLength:
+  Max: 101
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Layout/TrailingBlankLines:
+  #EnforcedStyle: 2
+  Enabled: false
+
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+
+#
+# Comments
+#
+
+Layout/LeadingCommentSpace:
+  #EnforcedStyle: commented_out_code
+  Enabled: false
+
+Style/BlockComments:
+  #EnforcedStyle: only_for_license_text
+  Enabled: false
+
+Style/InlineComments:
+  Enabled: false
+
+#
+# Arbitrary overrides
+#
+
+Lint/InheritException:
+  EnforcedStyle: standard_error
+
+# NB: `and` and `||` are different, with different
+#     precedence.  Use the right one.
+Style/AndOr:
+  Enabled: false
+Style/Not:
+  Enabled: false
+
+Style/BarePercentLiterals:
+  Enabled: false
+
+# not worth it
+Style/CollectionMethods:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+# reduce() is functional, each_with_object() is stateful
+Style/EachWithObject:
+  Enabled: false
+
+Style/EmptyLambdaParameter:
+  Enabled: false
+Style/Lambda:
+  EnforcedStyle: lambda
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# '%d' % x
+Style/FormatString:
+  EnforcedStyle: percent
+Style/FormatStringToken:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
+# def foo bar, baz
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+#Style/MethodCallWithArgsParentheses:
+#  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/OrAssignment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+Style/TrailingUnderscoreVariable:
+  AllowNamedUnderscoreVariables: true
+
+Style/TrivialAccessors:
+  Enabled: false
+
+#
+# Conditionals
+#
+
+Style/NegatedIf:
+  EnforcedStyle: postfix
+
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+#
+# Methods, parens, blocks, etc.
+#
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+Layout/ClosingParenthesisIndentation:
+  #EnforcedStyle: forbid
+  Enabled: false
+
+Layout/MultilineMethodCallBraceLayout:
+  EnforcedStyle: new_line
+#Layout/MultilineMethodCallIndentation:
+#  EnforceStyle: forbid
+Layout/MultilineMethodDefinitionBraceLayout:
+  EnforcedStyle: new_line
+# TODO: first braces on own line?
+
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Layout/SpaceBeforeFirstArg:
+  AllowForAlignment: true
+
+Lint/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_line
+Lint/EndAlignment:
+  EnforcedStyleAlignWith: start_of_line
+
+Layout/SpaceBeforeBlockBraces:
+  # `foo {}` vs `foo{}.bar`
+  Enabled: false
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+#Layout/DotPosition:
+#  EnforcedStyle: forbid
+#Layout/MultilinOperationIndentataion:
+#  EnforceStyle: forbid
+
+#Layout/IndentAssignment:
+#  EnforcedStyle: forbid
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Style/NestedParenthesizedCalls:
+  #EnforcedStyle: only_with_commas
+  Enabled: false
+
+#
+# Array layout
+#
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+Layout/MultilineArrayBraceLayout:
+  EnforcedStyle: new_line
+# TODO: first brace on own line?
+#Layout/SpaceInsideArrayPercentLiteral:
+#  AllowForAlignment: true
+
+#
+# Hash layout
+#
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+Layout/IndentHash:
+  EnforcedStyle: consistent
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+#
+# Class/Module layout
+#
+
+Layout/ClassStructure:
+  Categories:
+    includes:
+    - include
+    - prepend
+    - extend
+    attributes:
+    - attr_accessor
+    - attr_reader
+    - attr_writer
+  ExpectedOrder:
+    - includes
+    - constants
+    - class_methods
+    - initializer
+    - attributes
+    - instance_methods
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+Layout/EmptyLineBetweenDefs:
+  NumberOfEmptyLines:
+  - 1
+  - 2
+  AllowAdjacentOneLineDefs: true
+
+#
+# String layout
+#
+
+Layout/IndentHeredoc:
+  Enabled: false
+#Layout/SpaceInsidePercentLiteralDelimiters:
+#  AllowForAlignment: true
+
+Style/CommandLiteral:
+#  EnforcedStyle: disallow
+  EnforcedStyle: percent_x
+
