@@ -1,6 +1,9 @@
 AllCops:
   DisplayCopNames: true
 
+Metrics:
+  Severity: warning
+
 #
 # General Overrides
 #
