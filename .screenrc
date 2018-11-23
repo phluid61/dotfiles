@@ -2,10 +2,10 @@
 attrcolor b ".I"
 
 # rules for setting AB=background and AF=foreground
-termcapinfo xterm 'Co#156:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm* 'Co#156:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # use Shift+PgUp / Shift+PgDn
-termcapinfo xterm|xterms|xs|rxvt ti@:te@
+termcapinfo xterm*|xs|rxvt* ti@:te@
 
 # erase with background colour
 defbce "on"
