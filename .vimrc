@@ -66,3 +66,9 @@ function! StatuslineCurrentHighlight()
         return '[' . name . ']'
     endif
 endfunction
+map <F10> :echom StatuslineCurrentHighlight()<CR>
+
+call plug#begin('~/.vim/plugged')
+Plug 'leafgarland/typescript-vim'
+call plug#end()
+
