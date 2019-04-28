@@ -34,6 +34,8 @@ set undodir=$HOME/.vim/undo,/tmp
 set undolevels=1000
 set undoreload=10000
 
+set tabpagemax=100
+
 set hidden
 set wildmenu
 set showcmd
