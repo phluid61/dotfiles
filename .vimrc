@@ -37,6 +37,7 @@ set undoreload=10000
 set tabpagemax=100
 
 set hidden
+set wildmode=longest,list,full
 set wildmenu
 set showcmd
 set showmatch
