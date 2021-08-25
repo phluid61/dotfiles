@@ -81,7 +81,7 @@ case "$TERM" in
                     *)    HOSTNAME_C="48;5;88;38;5;214" ;;
                 esac
                 DIRNAME_C="38;5;33"
-                export PS1='\[\e]0;\u@\h: \w\a\]❬\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[0m❭\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
+                export PS1='\[\e]0;\u@\h: \w\a\]❬\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[95m$('$HOME'/.gitprompt.sh)\e[0m❭\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
                 export PS2='\$… '
                 export PS3='
 ▷ '
@@ -99,7 +99,7 @@ case "$TERM" in
                     *)    HOSTNAME_C="31" ;;
                 esac
                 DIRNAME_C="31"
-                export PS1='\[\e]0;\u@\h: \w\a\][\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[0m]\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
+                export PS1='\[\e]0;\u@\h: \w\a\][\e['$USERNAME_C'm\u\e[0m@\e['$HOSTNAME_C'm\h\e[0m \e['$DIRNAME_C'm\w\e[95m$('$HOME'/.gitprompt.sh)\e[0m]\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
                 export PS2='\$> '
                 export PS3='
 > '
@@ -119,7 +119,7 @@ case "$TERM" in
         ;;
     *)
         # monochromatic version of my otherwise sexy color prompt
-        export PS1='[\u@\h \w]\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
+        export PS1='[\u@\h \w$('$HOME'/.gitprompt.sh)]\n[$('$HOME'/.dir_chomp.sh "$(pwd)")]\$ '
         # prompt for continued (multiline) commands
         export PS2='\$> '
         # prompt for `select`
