@@ -187,6 +187,6 @@ export -f die
 
 ### Timestamp at the start of every command
 before_command() {
-    printf "\e[44;30m%*s\e[0m\n" $(tput cols) "<<< $(date +'%Y-%m-%d %T.%N')"
+    printf "\e[48;5;234;30m%*s\e[0m\n" $(tput cols) "<<< $(date +'%Y-%m-%d %T.%N')"
 }
 trap before_command DEBUG
