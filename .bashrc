@@ -185,9 +185,9 @@ function die() {
 }
 export -f die
 
-### Timestamp at the start of every command
+### Timestamp before and after every command
 after_command() {
-    printf "\e[48;5;234;37m%*s\e[0m\n" $(tput cols) "<<< $(date +'%Y-%m-%d %T.%N')"
+    printf "\e[48;5;234;37m%*s\e[0m\n" $(tput cols) ">>> $(date +'%Y-%m-%d %T.%N')"
 }
 PROMPT_COMMAND=after_command
 
