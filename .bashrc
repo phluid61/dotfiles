@@ -187,12 +187,14 @@ export -f die
 
 ### Timestamp before and after every command
 after_command() {
+    [ -z "$NOTIME" ] && return
     printf "\e[48;5;234;37m%*s\e[0m\n" $(tput cols) "<<< $(date +'%Y-%m-%d %T.%N')"
 }
 PROMPT_COMMAND=after_command
 
 before_command() {
     [ "$BASH_COMMAND" = "$PROMPT_COMMAND" ] && return
+    [ -z "$NOTIME" ] && return
     printf "\e[48;5;234;37m%*s\e[0m\n" $(tput cols) ">>> $(date +'%Y-%m-%d %T.%N')"
 }
 trap before_command DEBUG
