@@ -51,6 +51,7 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
 set nowrap
+set nofixendofline
 map Y y$
 noremap <C-L> :nohl<CR><C-L>
 noremap <silent> <Space> :nohl<CR><C-L>
