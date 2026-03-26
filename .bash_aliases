@@ -11,3 +11,6 @@ alias cd='cd -P'
 # Because |Grep never works
 alias Grep=grep
 
+# Old habits
+alias ipconfig='ip address show'
+alias bro='brotli'

@@ -60,6 +60,22 @@ filetype on
 filetype indent on
 filetype plugin on
 
+augroup RubyHack
+    autocmd!
+    autocmd BufReadPost *.rb set ts=2 sts=2 sw=2 expandtab
+    autocmd BufNewFile  *.rb set ts=2 sts=2 sw=2 expandtab
+augroup END
+
+augroup MattyHack
+    autocmd!
+
+    " Delete (wipeout) buffers when hidden (i.e. :q)
+    autocmd BufHidden * if expand('<afile>') != '' && bufnr('<afile>') >= 0 | bwipeout! <afile> | endif
+
+    " Automatically reload .vimrc when editing it
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END
+
 set cul
 
 function! StatuslineCurrentHighlight()

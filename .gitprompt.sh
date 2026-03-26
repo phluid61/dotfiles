@@ -1,8 +1,6 @@
 #!/bin/bash --
 
-BRANCH=$(git branch 2>/dev/null)
-if [ $? != 0 ] ; then
-    exit
+BRANCH=$(git branch --no-color --show-current 2>/dev/null)
+if [ -n "$BRANCH" ] ; then
+	echo " @$BRANCH"
 fi
-
-echo "$BRANCH" | grep '^*' | sed -e 's/* / @/' | tr -d '\n'

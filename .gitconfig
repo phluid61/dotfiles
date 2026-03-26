@@ -1,5 +1,9 @@
 [push]
 	default = simple
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
 [alias]
 	; Simple short-hand aliases
 	stat = status
@@ -21,5 +25,7 @@
 	prune-all = !git remote | xargs -n 1 git remote prune
 	edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim -p `f`"
 	add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
+[diff]
+	submodule = log
 [diff "exif"]
 	textconv = exiftool
