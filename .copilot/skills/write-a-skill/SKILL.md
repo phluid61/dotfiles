@@ -1,6 +1,6 @@
 ---
 name: write-a-skill
-description: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
+description: Create or update agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, build, review, or refactor a skill.
 ---
 
 # Writing Skills
@@ -101,17 +101,20 @@ Scripts save tokens and improve reliability vs generated code.
 
 Split into separate files when:
 
-- SKILL.md exceeds 100 lines
-- Content has distinct domains (finance vs sales schemas)
+- Content has distinct domains (e.g. per-technology hints, per-platform guidance)
+- Worked examples are lengthy
 - Advanced features are rarely needed
+
+**What must stay in SKILL.md:** SKILL.md is the only file guaranteed to be in the agent's context when the skill is invoked. Keep all safety rules, behavioural constraints, required workflows, and validation checklists in SKILL.md. Only split out supplementary content that the agent can look up on demand (detailed procedures, examples, domain-specific reference data).
 
 ## Review Checklist
 
 After drafting, verify:
 
 - [ ] Description includes triggers ("Use when...")
-- [ ] SKILL.md under 100 lines
+- [ ] SKILL.md contains all safety and behavioural rules (not delegated to reference files)
+- [ ] Supplementary content (examples, domain-specific hints) is in separate files
 - [ ] No time-sensitive info
 - [ ] Consistent terminology
-- [ ] Concrete examples included
+- [ ] Concrete examples included (inline or via EXAMPLES.md)
 - [ ] References one level deep
