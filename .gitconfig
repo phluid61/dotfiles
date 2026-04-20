@@ -18,6 +18,7 @@
 	; info commands
 	who = shortlog -s --
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	logs = log --abbrev-commit --pretty=format:'%C(auto)%h %ad %D %s' --date=iso
 	tags = log --tags --no-walk --pretty=format:'%C(auto)%h %ad %D' --date=iso
 	aliases = !sh -c 'git config --get-regexp \"^alias\\.\" | sed -e \"s/alias\\.\\(\\S\\+\\)/    \\1 =/\"'
 	; action commands
