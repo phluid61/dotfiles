@@ -23,6 +23,7 @@
 	aliases = !sh -c 'git config --get-regexp \"^alias\\.\" | sed -e \"s/alias\\.\\(\\S\\+\\)/    \\1 =/\"'
 	; action commands
 	unstash = stash pop
+	unstage = restore --staged
 	panic = reset --hard ^HEAD
 	prune-all = !git remote | xargs -n 1 git remote prune
 	edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim -p `f`"
